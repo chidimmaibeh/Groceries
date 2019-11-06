@@ -6,18 +6,14 @@
   
   <ion-content padding>
       <ion-list>
-          <ion-item-sliding *ngFor="let item of items">
+          <ion-item-sliding *ngFor="let item of items; let i = index">
             <!--Food Item 1-->
             <ion-item>
               <h2>{{item.name}}</h2>
               <p>{{item.quantity}}</p>
             </ion-item>
             <ion-item-options>
-              <button ion-button color="secondary" icon-start>
-                <ion-icon name="cart"></ion-icon>
-                 Add to Cart
-              </button>
-              <button  (click)="removeItem(item)" ion-button color="secondary" icon-start>
+              <button  (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
                 <ion-icon name="trash"></ion-icon>
                 Delete
               </button>

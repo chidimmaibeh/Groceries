@@ -1,31 +1,33 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>{{title}}</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content padding>
-      <ion-list>
-          <ion-item-sliding *ngFor="let item of items; let i = index">
-            <!--Food Item 1-->
-            <ion-item>
-              <h2>{{item.name}}</h2>
-              <p>{{item.quantity}}</p>
-            </ion-item>
-            <ion-item-options>
-              <button  (click)="editItem(item, i)" ion-button color="primary" icon-start>
-                <ion-icon name="create"></ion-icon>
-                Edit
-              </button>
-              <button  (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
-                <ion-icon name="trash"></ion-icon>
-                Delete
-              </button>
-            </ion-item-options>
-          </ion-item-sliding>
-           
-    </ion-list>   
-    <ion-fab bottom right>
-      <button (click)="addItem()" ion-fab mini><ion-icon name="add"></ion-icon></button>
-  </ion-fab>     
-  </ion-content>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items; let i = index">
+      <!--Food Item 1-->
+      <ion-item>
+        <h2>{{item.name}}</h2>
+        <p>{{item.quantity}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+        <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+  <ion-fab bottom right>
+    <button (click)="addItem()" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

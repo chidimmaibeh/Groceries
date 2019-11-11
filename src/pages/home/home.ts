@@ -79,6 +79,7 @@ export class HomePage {
       duration: 3000
     });
     toast.present();
+    this.showEditItemPrompt(item, index);
   }
 
 
@@ -120,6 +121,43 @@ export class HomePage {
     });
     prompt.present();
   }
+
+  showEditItemPrompt(item, index) {
+    const prompt = this.alertCtrl.create({
+      title: 'Edit Item',
+      message: "Please edit item...",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Name',
+          value: item.name
+        },
+        {
+          name: 'quantity',
+          placeholder: 'Quantity',
+          value: item.qunatity
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: item => {
+            console.log('Saved clicked', item);
+            this.items.push(item);
+            this.items[index] = item; 
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
 
 
 }

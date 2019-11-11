@@ -13,6 +13,10 @@
               <p>{{item.quantity}}</p>
             </ion-item>
             <ion-item-options>
+              <button  (click)="editItem(item, i)" ion-button color="primary" icon-start>
+                <ion-icon name="create"></ion-icon>
+                Edit
+              </button>
               <button  (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
                 <ion-icon name="trash"></ion-icon>
                 Delete

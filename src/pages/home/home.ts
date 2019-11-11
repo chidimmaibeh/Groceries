@@ -72,6 +72,16 @@ export class HomePage {
     this.items.splice(index, 1);
   }
 
+  editItem(item, index) {
+    console.log("Editing Item -", item, index);
+    const toast = this.toastCtrl.create({
+      message: 'Editing Item - ' + index + " ...",
+      duration: 3000
+    });
+    toast.present();
+  }
+
+
   addItem() {
     console.log("Adding an Item");
     this.showAddItemPrompt();

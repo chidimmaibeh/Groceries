@@ -5,8 +5,11 @@
 </ion-header>
 
 <ion-content padding>
+  <h3  text-center *ngIf="loadItem().length == 0">
+    No item available on the list!
+  </h3>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of items; let i = index">
+    <ion-item-sliding *ngFor="let item of loadItem(); let i = index">
       <!--Food Item 1-->
       <ion-item>
         <h2>{{item.name}}</h2>

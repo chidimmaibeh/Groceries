@@ -40,13 +40,13 @@ export class HomePage {
       duration: 3000
     });
     toast.present();
-    this.InputDialogService.showEditItemPrompt(item, index);
+    this.InputDialogService.showPrompt(item, index);
   }
 
 
   addItem() {
     console.log("Adding an Item");
-    this.InputDialogService.showAddItemPrompt();
+    this.InputDialogService.showPrompt();
   }
 
  

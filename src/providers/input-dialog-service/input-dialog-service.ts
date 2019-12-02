@@ -1,11 +1,9 @@
-
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular'
-import { GroceriesServiceProvider } from '../../providers/groceries-service/groceries-service';
+import { AlertController } from 'ionic-angular';
+import { GroceriesServiceProvider } from '../groceries-service/groceries-service';
 
 /*
   Generated class for the InputDialogServiceProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
@@ -16,11 +14,13 @@ export class InputDialogServiceProvider {
     console.log('Hello InputDialogServiceProvider Provider');
   }
 
-
-  showPrompt(item?, index?) {
+  showPrompt(item?, index?){
+    if( index !== undefined) {
+      var keepId = item._id;
+    }
     const prompt = this.alertCtrl.create({
       title: item ? 'Edit Item' : 'Add Item',
-      message: item ? "Please edit item..." : "Please enter item",
+      message: item ?  "Please edit item..." : "Please enter item...",
       inputs: [
         {
           name: 'name',
@@ -30,7 +30,7 @@ export class InputDialogServiceProvider {
         {
           name: 'quantity',
           placeholder: 'Quantity',
-          value: item ? item.qunatity : null
+          value: item ? item.quantity : null
         },
       ],
       buttons: [
@@ -43,13 +43,11 @@ export class InputDialogServiceProvider {
         {
           text: 'Save',
           handler: item => {
-            console.log('Saved clicked', item);
-            if (index != undefined) {
-              this.dataService.editItem(item, index);
-            }
-            else {
+            if(index !== undefined){
+              console.log("Entering triple params.");
+              this.dataService.editItem(item, keepId, index);
+            }else{
               this.dataService.addItem(item);
-
             }
           }
         }
@@ -57,6 +55,8 @@ export class InputDialogServiceProvider {
     });
     prompt.present();
   }
+
+
 
 
 }
